@@ -7,6 +7,25 @@ const DRAFT_KEY = 'plan-uvp8-draft';
 const SCALE_KEY = 'plan-uvp8-scale';
 const SCALES = [16, 18, 20];
 
+// Постійна адреса: завжди веде на найсвіжіший реліз, міняти не треба.
+const WIN_URL = 'https://github.com/Gregory-Ivd/plan-uvp8/releases/latest/download/plan-uvp8-windows.zip';
+
+const WIN_WARNING = 'Програма не має цифрового підпису, тому під час першого запуску '
+  + 'Windows покаже синє вікно «Система Windows захистила ваш комп\'ютер». '
+  + 'Натисніть «Докладніше», далі «Виконати в будь-якому разі». Якщо архів не '
+  + 'розпаковується — у властивостях файлу поставте позначку «Розблокувати». '
+  + 'Так поводиться будь-яка непідписана програма.';
+
+function downloadBlock(compact) {
+  return `<div class="hint download" style="border-left-color:var(--orange)">
+      <span class="label">Версія для Windows</span>
+      <p style="margin-top:0">Працює без інтернету, запускається з флешки без встановлення.
+         Додатково має редактор шаблону для адміністрації установи.</p>
+      <p><a class="btn btn-primary" href="${WIN_URL}">Завантажити для Windows (≈24 МБ)</a></p>
+      ${compact ? '' : `<p class="sub">${esc(WIN_WARNING)}</p>`}
+    </div>`;
+}
+
 const TAB_COLORS = {
   green:  ['#E4F0E9', '#1E7A45'],
   blue:   ['#E3EAF4', '#15356B'],
@@ -252,7 +271,8 @@ function renderWelcome(el) {
         <span class="label">Хто зробив цю програму</span>
         ${nl2br(tpl.made_by || '')}
       </div>
-    </div>`;
+    </div>
+    ${downloadBlock(true)}`;
 }
 
 function renderInstruction(el) {
@@ -666,11 +686,7 @@ function renderExport(el) {
       відділення СПС. Рамку «Висновки щодо результатів реалізації» заповнюють у кінці
       періоду — вона має лишитися порожньою.
     </div>
-    <div class="hint" style="border-left-color:var(--orange)">
-      <span class="label">Про цю версію</span>
-      Це демонстраційна версія у браузері. Повна програма для Windows працює без інтернету,
-      запускається з флешки і додатково дає редактор шаблону для адміністрації установи.
-    </div>`;
+    ${downloadBlock(false)}`;
 
   $('btnPrint').onclick = () => {
     doPrint();
