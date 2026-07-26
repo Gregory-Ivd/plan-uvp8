@@ -1,0 +1,250 @@
+/* «Мій план» — веб-версія.
+   Палітра взята з логотипа «Освітнього простору №8». */
+
+:root {
+  --navy: #15356B;
+  --navy-dark: #0E2A57;
+  --orange: #F39200;
+  --green: #2E9E5B;
+
+  --bg: #EEF1F5;
+  --bg-dark: #E3E8EF;
+  --card: #FFFFFF;
+  --edge: #D5DCE5;
+  --hairline: #E6EAF0;
+
+  --ink: #1C2733;
+  --ink-soft: #5B6B7C;
+  --ink-muted: #8A97A5;
+  --red: #B3261E;
+  --green-ink: #1E7A45;
+
+  --hint-bg: #EDF2F9;
+  --hint-edge: #C7D6E8;
+  --hint-ink: #274067;
+
+  --serif: Georgia, Cambria, "Times New Roman", serif;
+  --sans: "Segoe UI", Tahoma, Verdana, sans-serif;
+  --fs: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: var(--fs); }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------- смуга попередження ---------- */
+.demo-bar {
+  background: #FFF4E0;
+  border-bottom: 1px solid #EBCF9E;
+  color: #6B4A10;
+  padding: .7rem 3rem .7rem 1.2rem;
+  font-size: .92rem;
+  position: relative;
+}
+.demo-bar strong { color: #8A5A10; }
+.demo-close {
+  position: absolute; right: .7rem; top: 50%; transform: translateY(-50%);
+  background: none; border: 0; font-size: 1rem; cursor: pointer; color: #8A5A10;
+  padding: .2rem .5rem; border-radius: 4px;
+}
+.demo-close:hover { background: #F3E3C4; }
+.demo-bar.hidden { display: none; }
+
+/* ---------- верхня смуга ---------- */
+.topbar {
+  background: var(--navy);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1.2rem;
+  flex-wrap: wrap;
+}
+.topbar-logo { width: 30px; height: 30px; display: block; }
+.topbar-title { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; }
+.topbar-progress { color: #B9C7DD; font-size: .9rem; font-weight: 600; }
+.topbar-actions { margin-left: auto; display: flex; gap: .5rem; }
+
+/* ---------- крокова навігація ---------- */
+.steps {
+  display: flex; flex-wrap: wrap; gap: .3rem;
+  padding: .6rem 1.2rem;
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--edge);
+}
+.step-dot {
+  min-width: 2rem; height: 1.9rem; padding: 0 .5rem;
+  border: 1px solid var(--edge); background: #fff; color: var(--ink-soft);
+  border-radius: 4px; font-size: .82rem; cursor: pointer; font-family: var(--sans);
+}
+.step-dot:hover { border-color: var(--navy); color: var(--navy); }
+.step-dot.done { background: #E4F0E9; border-color: #BBDCC8; color: var(--green-ink); }
+.step-dot.current { background: var(--navy); border-color: var(--navy); color: #fff; font-weight: 700; }
+
+/* ---------- робоча область ---------- */
+.screen {
+  flex: 1;
+  padding: 1.6rem 1.2rem 2.4rem;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  outline: none;
+}
+
+h1 { font-family: var(--serif); font-size: 1.7rem; color: var(--navy); margin: .2rem 0 .3rem; line-height: 1.25; }
+h1.section-title { color: inherit; }
+h2 { font-family: var(--serif); font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 1.1rem; font-weight: 700; }
+p { margin: .5rem 0; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--edge);
+  border-left: 4px solid var(--navy);
+  padding: 1rem 1.2rem;
+  margin: .9rem 0;
+}
+.card h3 { font-family: var(--serif); margin: 0 0 .5rem; font-size: 1.05rem; }
+.card p:last-child { margin-bottom: 0; }
+
+.hint {
+  background: var(--hint-bg);
+  border: 1px solid var(--hint-edge);
+  border-left: 4px solid var(--navy);
+  padding: .9rem 1.1rem;
+  margin: .9rem 0;
+  color: var(--hint-ink);
+}
+.hint .label {
+  display: block; text-transform: uppercase; letter-spacing: .04em;
+  font-size: .75rem; color: var(--ink-muted); margin-bottom: .25rem;
+}
+
+.made-by { display: flex; gap: 1rem; align-items: flex-start; max-width: 640px; }
+.made-by img { width: 96px; height: 96px; flex: none; }
+
+.chip {
+  display: inline-block; padding: .25rem .8rem; border-radius: 3px;
+  font-size: .82rem; font-weight: 700; margin-bottom: .6rem;
+}
+
+label.field { display: block; margin: .9rem 0 .3rem; font-weight: 600; }
+.sub { font-size: .85rem; color: var(--ink-soft); margin: .2rem 0 0; }
+
+input[type=text], textarea, select {
+  width: 100%; font-family: var(--sans); font-size: 1rem; color: var(--ink);
+  border: 1px solid var(--edge); background: #fff; padding: .6rem .7rem;
+  border-radius: 3px;
+}
+input[type=text]:focus, textarea:focus, select:focus {
+  outline: none; border-color: var(--navy); box-shadow: 0 0 0 2px rgba(21,53,107,.12);
+}
+textarea { min-height: 8.5rem; resize: vertical; line-height: 1.55; }
+.counter { text-align: right; font-size: .82rem; color: var(--ink-soft); margin-top: .2rem; }
+.counter.short { color: var(--red); }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 1.2rem; }
+
+details.example { margin: .6rem 0 0; }
+details.example summary {
+  cursor: pointer; color: var(--navy); font-weight: 600; font-size: .95rem;
+  list-style: none; padding: .3rem 0;
+}
+details.example summary::-webkit-details-marker { display: none; }
+details.example summary::before { content: "▸ "; }
+details.example[open] summary::before { content: "▾ "; }
+details.example .body {
+  background: #F7F9FC; border: 1px solid var(--hairline);
+  padding: .9rem 1rem; color: var(--ink-soft);
+}
+
+.avoid { color: var(--red); font-size: .92rem; margin: .7rem 0 0; }
+.avoid ul { margin: .3rem 0 0; padding-left: 1.2rem; }
+
+.skip { margin-top: 1rem; font-size: .95rem; color: var(--ink-soft); }
+.skip input { margin-right: .4rem; }
+
+/* ---------- перевірка ---------- */
+.issue { border-left-width: 4px; }
+.issue.block { border-left-color: var(--red); }
+.issue.warn  { border-left-color: #A96400; }
+.issue.hint  { border-left-color: var(--ink-muted); }
+.issue .head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.issue .head b { font-size: .95rem; }
+.issue.block .head b { color: var(--red); }
+.issue.warn .head b  { color: #A96400; }
+.issue.hint .head b  { color: var(--ink-soft); }
+
+.preview {
+  background: #fff; border: 1px solid var(--edge); padding: 1.2rem;
+  font-family: "Consolas", "Courier New", monospace; font-size: .86rem;
+  white-space: pre-wrap; max-height: 30rem; overflow: auto;
+}
+
+/* ---------- кнопки ---------- */
+.btn {
+  font-family: var(--sans); font-size: .95rem; font-weight: 600;
+  border: 1px solid transparent; border-radius: 3px;
+  padding: .6rem 1.2rem; cursor: pointer;
+}
+.btn-primary { background: var(--navy); color: #fff; }
+.btn-primary:hover { background: var(--navy-dark); }
+.btn-secondary { background: #fff; color: var(--navy); border-color: var(--edge); }
+.btn-secondary:hover { background: #F0F3F8; }
+.btn-ghost { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.25); }
+.btn-ghost:hover { background: rgba(255,255,255,.22); }
+.btn-small { padding: .3rem .7rem; font-size: .85rem; }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn-row { display: flex; gap: .7rem; flex-wrap: wrap; margin: .8rem 0; }
+
+/* ---------- нижня смуга ---------- */
+.bottombar {
+  position: sticky; bottom: 0;
+  background: var(--bg-dark); border-top: 1px solid var(--edge);
+  padding: .8rem 1.2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.bottombar .btn-primary { margin-left: auto; }
+.bottom-hint { margin-left: auto; color: var(--ink-soft); font-size: .85rem; }
+.bottom-hint + .btn-primary { margin-left: 0; }
+
+.status { margin-top: .8rem; color: var(--green-ink); font-weight: 600; }
+
+/* ---------- сам документ ---------- */
+.print-area { display: none; }
+
+.doc { font-family: "Times New Roman", Times, serif; color: #000; font-size: 11pt; }
+.doc h1 { font-family: inherit; text-align: center; font-size: 13pt; color: #000; margin: 0 0 8pt; }
+.doc .center { text-align: center; }
+.doc .tiny { font-size: 8pt; text-align: center; }
+.doc table { border-collapse: collapse; width: 100%; margin-bottom: 6pt; }
+.doc td, .doc th { border: 1px solid #000; padding: 2pt 3pt; font-size: 10pt; vertical-align: top; }
+.doc th { text-align: center; }
+.doc td.band { font-weight: bold; text-align: left; background: #F0F0F0; }
+.doc td.term { text-align: center; }
+.doc .sign { margin-top: 10pt; }
+.doc .sign p { margin: 10pt 0 0; }
+
+@media print {
+  .demo-bar, .topbar, .steps, .screen, .bottombar { display: none !important; }
+  .print-area { display: block !important; }
+  body { background: #fff; }
+  @page { size: A4 portrait; margin: 15mm 10mm; }
+  .doc td, .doc th { font-size: 9.5pt; }
+}
+
+@media (max-width: 640px) {
+  .topbar-progress { width: 100%; }
+  .made-by { flex-direction: column; }
+}

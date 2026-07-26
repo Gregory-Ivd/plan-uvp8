@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мій план — індивідуальний план виправлення та ресоціалізації</title>
+<meta name="description" content="Демонстраційна версія програми для заповнення індивідуального плану виправлення та ресоціалізації. Продукт навчання та роботи учасників «Освітнього простору №8».">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="demo-bar" id="demoBar">
+  <strong>Демонстраційна версія.</strong>
+  Не вводьте сюди справжні персональні дані. Усе, що ви наберете, залишається
+  у вашому браузері: сторінка нічого нікуди не надсилає й не зберігає на сервері.
+  <button type="button" class="demo-close" id="demoClose" aria-label="Сховати">✕</button>
+</div>
+
+<header class="topbar">
+  <img src="logo.png" alt="" class="topbar-logo">
+  <span class="topbar-title">Мій план</span>
+  <span class="topbar-progress" id="progress"></span>
+  <div class="topbar-actions">
+    <button type="button" id="btnScale" class="btn btn-ghost" title="Розмір тексту">Аа</button>
+    <button type="button" id="btnReset" class="btn btn-ghost">Почати заново</button>
+  </div>
+</header>
+
+<nav class="steps" id="steps" aria-label="Розділи"></nav>
+
+<main id="screen" class="screen" tabindex="-1"></main>
+
+<footer class="bottombar">
+  <button type="button" id="btnBack" class="btn btn-secondary">‹ Назад</button>
+  <span class="bottom-hint" id="bottomHint"></span>
+  <button type="button" id="btnNext" class="btn btn-primary">Далі ›</button>
+</footer>
+
+<!-- Сюди складається сам документ: на екрані сховано, друкується тільки він. -->
+<div id="printArea" class="print-area" aria-hidden="true"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
